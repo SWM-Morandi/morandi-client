@@ -12,9 +12,10 @@ const config: Config = {
         "mrd-color-white": "#fcfcfc",
         "mrd-color-dark": "#292929",
         "mrd-color-pink": "#F04452",
+        "mrd-color-gray": "#F3F5F6",
       },
       dropShadow: {
-        main: "0px 0px 16px rgba(0, 0, 0, 0.15)",
+        main: "0px 0px 16px rgba(0, 0, 0, 0.08)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

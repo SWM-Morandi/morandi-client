@@ -9,7 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // "main-dark-gray": "#292929",
+        "mrd-color-white": "#fcfcfc",
+        "mrd-color-dark": "#292929",
+        "mrd-color-pink": "#F04452",
       },
       dropShadow: {
         main: "0px 0px 16px rgba(0, 0, 0, 0.15)",

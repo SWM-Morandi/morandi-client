@@ -27,7 +27,7 @@ export default function RankingTable() {
         </div>
       </div>
       {[1, 2, 3, 4, 5].map((_, index) => (
-        <>
+        <div className="w-full" key={index}>
           <hr className="w-full border" />
           <div className="flex flex-row items-center justify-center w-full py-4">
             <div className="flex flex-row items-center justify-center font-bold w-[10%]">
@@ -59,7 +59,7 @@ export default function RankingTable() {
               <div className="font-bold ml-2">184min</div>
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

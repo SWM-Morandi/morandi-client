@@ -7,7 +7,7 @@ export default function ContentLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center overflow-x-hidden">
       <Header />
       {children}
       <Footer />

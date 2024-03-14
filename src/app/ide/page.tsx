@@ -17,7 +17,6 @@ export default function IDE() {
           <Header />
           <div className="flex flex-row px-[2rem]">
             <ProblemInfo />
-
             <div className="flex flex-col w-[53vw]">
               <Editor />
               <InputOuputBox />

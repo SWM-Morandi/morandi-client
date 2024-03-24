@@ -1,20 +1,100 @@
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  // http.get("/api/lectures", () => {
-  //   return HttpResponse.json([
-  //     {
-  //       id: 4,
-  //       title: "김영한 레전드 스프링 강의",
-  //       description:
-  //         "스프링을 처음 배우시는 누구나 쉽게 공부할 수 있는 강의입니다.",
-  //       tutor: "김영한",
-  //       thumbnail: {
-  //         id: 4,
-  //         filename: "thumbnail.jpg",
-  //         path: "https://i0.wp.com/blog.codestates.com/wp-content/uploads/2022/11/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.png?resize=750%2C354&ssl=1",
-  //       },
-  //     },
-  //   ]);
-  // }),
+  http.get("/contents/today-problems", () => {
+    return HttpResponse.json([
+      {
+        problemId: 1,
+        bojProblemId: 1000,
+        difficulty: "초급",
+        submitNumber: 40,
+        correctNumber: 20,
+      },
+      {
+        problemId: 2,
+        bojProblemId: 1001,
+        difficulty: "중급",
+        submitNumber: 30,
+        correctNumber: 12,
+      },
+      {
+        problemId: 3,
+        bojProblemId: 1002,
+        difficulty: "중급",
+        submitNumber: 32,
+        correctNumber: 13,
+      },
+      {
+        problemId: 4,
+        bojProblemId: 1003,
+        difficulty: "상급",
+        submitNumber: 20,
+        correctNumber: 4,
+      },
+    ]);
+  }),
+  http.get("/contents/today-problems/ranking", () => {
+    return HttpResponse.json([
+      {
+        rank: 1,
+        nickname: "HELLO",
+        problemSolvedInfo: [
+          { problemId: 1, isCorrect: true, solvedTime: "00:03" },
+          { problemId: 2, isCorrect: true, solvedTime: "00:23" },
+          { problemId: 3, isCorrect: true, solvedTime: "01:00" },
+          { problemId: 4, isCorrect: true, solvedTime: "01:23" },
+        ],
+        correctAllNumber: 4,
+        solvedAllTime: 184,
+      },
+      {
+        rank: 2,
+        nickname: "YEOBI",
+        problemSolvedInfo: [
+          { problemId: 1, isCorrect: true, solvedTime: "00:03" },
+          { problemId: 2, isCorrect: true, solvedTime: "00:23" },
+          { problemId: 3, isCorrect: true, solvedTime: "01:00" },
+          { problemId: 4, isCorrect: true, solvedTime: "01:23" },
+        ],
+        correctAllNumber: 4,
+        solvedAllTime: 184,
+      },
+      {
+        rank: 3,
+        nickname: "TAEYANG",
+        problemSolvedInfo: [
+          { problemId: 1, isCorrect: true, solvedTime: "00:03" },
+          { problemId: 2, isCorrect: true, solvedTime: "00:23" },
+          { problemId: 3, isCorrect: true, solvedTime: "01:00" },
+          { problemId: 4, isCorrect: true, solvedTime: "01:23" },
+        ],
+        correctAllNumber: 4,
+        solvedAllTime: 184,
+      },
+      {
+        rank: 4,
+        nickname: "NAXI",
+        problemSolvedInfo: [
+          { problemId: 1, isCorrect: true, solvedTime: "00:03" },
+          { problemId: 2, isCorrect: true, solvedTime: "00:23" },
+          { problemId: 3, isCorrect: true, solvedTime: "01:00" },
+          { problemId: 4, isCorrect: true, solvedTime: "01:23" },
+        ],
+        correctAllNumber: 4,
+        solvedAllTime: 184,
+      },
+      {
+        rank: 5,
+        nickname: "GOGO",
+        problemSolvedInfo: [
+          { problemId: 1, isCorrect: true, solvedTime: "00:03" },
+          { problemId: 2, isCorrect: true, solvedTime: "00:23" },
+          { problemId: 3, isCorrect: true, solvedTime: "01:00" },
+          { problemId: 4, isCorrect: true, solvedTime: "01:23" },
+        ],
+        correctAllNumber: 4,
+        solvedAllTime: 184,
+      },
+    ]);
+  }),
 ];

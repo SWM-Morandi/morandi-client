@@ -5,6 +5,10 @@ import { useState } from "react";
 import TodayProblemCard from "@/app/contents/today-problem/_component/TodayProblemCard";
 import problemListStyle from "./todayProblemList.module.css";
 
+import { useQuery } from "@tanstack/react-query";
+import { getTodayProblems } from "@/app/contents/today-problem/_apis/getTodayProblems";
+import { TodayProblemResponse } from "@/types/todayProblemResponse";
+
 export default function TodayProblemList() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -34,6 +38,11 @@ export default function TodayProblemList() {
     setIsDragging(false);
   };
 
+  const { data } = useQuery<TodayProblemResponse[]>({
+    queryKey: ["today-problems"],
+    queryFn: getTodayProblems,
+  });
+
   return (
     <div className="flex flex-col justify-center items-start my-20">
       <div className="ml-[calc((100vw-80rem)/2)] text-[2rem] font-semibold">
@@ -50,10 +59,9 @@ export default function TodayProblemList() {
         onMouseUp={handleMouseUp}
       >
         <div className="mr-[calc((100vw-80rem)/2)]" />
-        <TodayProblemCard title={"PROBLEM 1"} />
-        <TodayProblemCard title={"PROBLEM 2"} />
-        <TodayProblemCard title={"PROBLEM 3"} />
-        <TodayProblemCard title={"PROBLEM 4"} />
+        {data?.map((problem, index) => (
+          <TodayProblemCard {...problem} key={index} />
+        ))}
         <div className="mr-[calc((100vw-80rem)/2)]" />
       </div>
     </div>

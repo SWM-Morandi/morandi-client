@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import FirstPlace from "@/app/contents/today-problem/_assets/FirstPlace.json";
 import SecondPlace from "@/app/contents/today-problem/_assets/SecondPlace.json";
 import ThridPlace from "@/app/contents/today-problem/_assets/ThirdPlace.json";
+import { TodayProblemRankingResponse } from "@/types/todayProblemResponse";
 
 const Lottie = dynamic(() => import("react-lottie-player"), { ssr: false });
 
@@ -14,22 +15,18 @@ const mcLaren = McLaren({
   weight: "400",
 });
 
-type Props = {
-  title: string;
-};
-
-export default function RankingCard({ title }: Props) {
+export default function RankingCard(props: TodayProblemRankingResponse) {
   return (
     <div className="flex flex-col justify-center items-center bg-white drop-shadow-main p-6 rounded-2xl my-8">
       <div className="flex flex-row justify-center items-center mt-4 mb-8">
         <div className="w-[5rem]">
           {(() => {
-            switch (title) {
-              case "1ST":
+            switch (props.rank) {
+              case 1:
                 return <Lottie loop animationData={FirstPlace} play />;
-              case "2ND":
+              case 2:
                 return <Lottie loop animationData={SecondPlace} play />;
-              case "3RD":
+              case 3:
                 return <Lottie loop animationData={ThridPlace} play />;
               default:
                 return null;
@@ -39,7 +36,18 @@ export default function RankingCard({ title }: Props) {
         <div
           className={`${mcLaren.className} flex flex-col justify-center items-center text-[2rem] ml-6`}
         >
-          <div className="leading-7">{title}</div>
+          {(() => {
+            switch (props.rank) {
+              case 1:
+                return <div className="leading-7">1ST</div>;
+              case 2:
+                return <div className="leading-7">2ND</div>;
+              case 3:
+                return <div className="leading-7">3RD</div>;
+              default:
+                return null;
+            }
+          })()}
           <div className="leading-7">PLACE</div>
         </div>
       </div>

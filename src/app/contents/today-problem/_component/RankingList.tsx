@@ -5,7 +5,16 @@ import RankingTable from "@/app/contents/today-problem/_component/RankingTable";
 
 import { IoCalendarNumberOutline } from "react-icons/io5";
 
+import { useQuery } from "@tanstack/react-query";
+import { getTodayProblemsRanking } from "@/app/contents/today-problem/_apis/getTodayProblems";
+import { TodayProblemRankingResponse } from "@/types/todayProblemResponse";
+
 export default function RankingList() {
+  const { data } = useQuery<TodayProblemRankingResponse[]>({
+    queryKey: ["today-problems", "ranking"],
+    queryFn: getTodayProblemsRanking,
+  });
+
   return (
     <div className="flex flex-col justify-start items-start w-full max-w-[80rem] mb-20">
       <div className="flex flex-row justify-center items-center">
@@ -22,9 +31,10 @@ export default function RankingList() {
         산정됩니다.
       </div>
       <div className="flex flex-row justify-between w-full max-w-[80rem]">
-        <RankingCard title="1ST" />
-        <RankingCard title="2ND" />
-        <RankingCard title="3RD" />
+        {data?.map((data, index) => {
+          if (index > 2) return null;
+          return <RankingCard {...data} key={index} />;
+        })}
       </div>
       <RankingTable />
     </div>

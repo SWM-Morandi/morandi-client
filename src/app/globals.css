@@ -25,3 +25,9 @@ body {
     text-wrap: balance;
   }
 }
+
+img,
+a {
+  user-select: none;
+  -webkit-user-drag: none;
+}
